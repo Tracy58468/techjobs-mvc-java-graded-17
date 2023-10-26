@@ -21,7 +21,10 @@ public class ListController {
     static HashMap<String, String> columnChoices = new HashMap<>();
     static HashMap<String, Object> tableChoices = new HashMap<>();
 
+    /** Constructor that populates columnChoices and tableChoices **/
+
     public ListController () {
+
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
         columnChoices.put("location", "Location");
@@ -34,8 +37,11 @@ public class ListController {
         tableChoices.put("coreCompetency", JobData.getAllCoreCompetency());
     }
 
+    /** Handler methods: list and listJobsByColumnAndValue **/
+
+    /** Displays table of clickable links for job categories in list.html **/
     @GetMapping(value = "")
-    public String list(Model model) {
+    public String list (Model model) {
         model.addAttribute("columns", columnChoices);
         model.addAttribute("tableChoices", tableChoices);
         model.addAttribute("employers", JobData.getAllEmployers());
@@ -46,8 +52,9 @@ public class ListController {
         return "list";
     }
 
+    /** Displays information for jobs that relate to a selected category in list-jobs.html **/
     @GetMapping(value = "jobs")
-    public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam(required = false) String value) {
+    public String listJobsByColumnAndValue (Model model, @RequestParam String column, @RequestParam(required = false) String value) {
         ArrayList<Job> jobs;
         if (column.equals("all")){
             jobs = JobData.findAll();

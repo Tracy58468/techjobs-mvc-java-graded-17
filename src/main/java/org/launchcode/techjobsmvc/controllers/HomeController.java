@@ -13,7 +13,8 @@ import java.util.HashMap;
 public class HomeController {
 
     @GetMapping(value = "/")
-    public String index(Model model) {
+    public String index (Model model) {
+        /** Displays home page for app **/
 
         HashMap<String, String> actionChoices = new HashMap<>();
         actionChoices.put("search", "Search");
