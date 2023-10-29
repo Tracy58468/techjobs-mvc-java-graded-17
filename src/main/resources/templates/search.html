@@ -38,7 +38,53 @@
 
   <!-- TODO #4 - Loop over the search results to display all job fields. -->
 
+    <th:block th:each="jobItem : ${jobs}">
+
+        <table class = "job-listing">
+
+            <tr>
+                <td>ID</td>
+                <td  th:text = "${jobItem.id}"> </td>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td  th:text = "${jobItem.name}"> </td>
+            </tr>
+
+            <tr>
+                <td>Employer</td>
+                <td  th:text = "${jobItem.employer}" />
+            </tr>
+
+            <tr>
+                <td>Location</td>
+                <td  th:text = "${jobItem.location}" />
+            </tr>
+
+            <tr>
+                <td>Position Type</td>
+                <td  th:text = "${jobItem.positionType}" />
+            </tr>
+
+            <tr>
+                <td>Skill</td>
+                <td  th:text = "${jobItem.coreCompetency}" />
+            </tr>
+
+        </table>
+
+    </th:block>
+
 </div>
 
 </body>
 </html>
+
+<!--
+
+ 6. Pass jobs into the search.html view via the model parameter.
+
+ 7. Pass ListController.columnChoices into the view, as the existing search handler does.
+
+-->
